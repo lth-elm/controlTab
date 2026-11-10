@@ -88,3 +88,5 @@ Nothing leaves your browser: the extension makes no network requests. Details ar
 - `background.js`: recency tracking, previews, shortcut handling.
 - `switcher.js`: the switcher drawn in the page, and key release detection.
 - `options.html`, `options.js`: settings page and toolbar popup.
+- `docs/`: the screenshot used in this README.
+- `store/`: images and texts for the Chrome Web Store listing. Not needed to use the extension.
