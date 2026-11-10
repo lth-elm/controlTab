@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "controlTab",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Ctrl+Tab switches to your most recently used tabs, with an optional visual switcher.",
   "minimum_chrome_version": "114",
   "icons": {

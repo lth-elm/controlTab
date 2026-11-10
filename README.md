@@ -79,7 +79,8 @@ that way can be brought back with Cmd+Shift+T as usual.
 - **Tabs, favicon**: titles and icons for the switcher.
 - **Storage**: your setting, plus the recent list and previews (kept in memory for the session only).
 
-Nothing leaves your browser: the extension makes no network requests.
+Nothing leaves your browser: the extension makes no network requests. Details are in the
+[privacy policy](PRIVACY.md).
 
 ## Files
 
