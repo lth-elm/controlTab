@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "controlTab",
+  "version": "1.3.0",
+  "description": "Ctrl+Tab switches to your most recently used tabs, with an optional visual switcher.",
+  "minimum_chrome_version": "114",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "permissions": ["tabs", "storage", "scripting", "favicon"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["switcher.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "controlTab",
+    "default_popup": "options.html"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "commands": {
+    "forward": {
+      "description": "Switch to the most recently used tab (Ctrl+Tab)"
+    },
+    "backward": {
+      "description": "Move backward through recent tabs (Ctrl+Shift+Tab)"
+    }
+  }
+}

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>controlTab</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --accent: #7c5cff;
+        --line: color-mix(in srgb, currentColor 18%, transparent);
+        --muted: color-mix(in srgb, currentColor 62%, transparent);
+        --soft: color-mix(in srgb, currentColor 7%, transparent);
+      }
+      body {
+        width: 340px;
+        margin: 0;
+        padding: 16px;
+        font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 16px;
+      }
+      h2 {
+        margin: 18px 0 8px;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .mode {
+        display: flex;
+        gap: 10px;
+        padding: 10px 12px;
+        margin-bottom: 6px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .mode:has(input:checked) {
+        border-color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+      }
+      .mode input {
+        margin: 3px 0 0;
+        accent-color: var(--accent);
+      }
+      .mode b {
+        display: block;
+      }
+      .mode span,
+      .note {
+        color: var(--muted);
+      }
+      .note {
+        margin: 8px 0 0;
+      }
+      .keys {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+      }
+      kbd {
+        padding: 1px 6px;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        font: inherit;
+        background: var(--soft);
+      }
+      .unset {
+        color: #d9822b;
+      }
+      details {
+        margin-top: 8px;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      ol {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+      pre {
+        margin: 6px 0;
+        padding: 8px;
+        border-radius: 8px;
+        font: 11px/1.4 ui-monospace, Menlo, Consolas, monospace;
+        white-space: pre-wrap;
+        word-break: break-all;
+        background: var(--soft);
+      }
+      button {
+        padding: 4px 10px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        font: inherit;
+        color: inherit;
+        background: var(--soft);
+        cursor: pointer;
+      }
+      button:hover {
+        border-color: var(--accent);
+      }
+      #clear {
+        margin: 8px 0 6px;
+      }
+      .choice {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 3px 0;
+        cursor: pointer;
+      }
+      .choice:first-of-type {
+        margin-top: 4px;
+      }
+      .choice input {
+        margin: 0;
+        accent-color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>controlTab</h1>
+
+    <label class="mode">
+      <input type="radio" name="mode" value="visual" />
+      <div>
+        <b>Show the switcher</b>
+        <span>
+          Hold the shortcut's modifier key and tap Tab to move through your recent tabs, with
+          previews. Release to switch. A quick tap jumps straight to the last tab.
+        </span>
+      </div>
+    </label>
+    <label class="mode">
+      <input type="radio" name="mode" value="direct" />
+      <div>
+        <b>Switch directly</b>
+        <span>
+          Each press jumps straight to the last tab you used, with no visual. Keep the modifier
+          key held and tap Tab again to go further back.
+        </span>
+      </div>
+    </label>
+
+    <p class="note">Add Shift to move the other way, in both modes.</p>
+
+    <h2>Recent tabs</h2>
+    <p class="note">
+      The list starts empty every time the browser starts and fills up as you visit tabs. While the
+      switcher is open, Cmd+Delete empties it. So does this button.
+    </p>
+    <button id="clear">Clear recent tabs</button>
+
+    <p class="note">Delete, and the cross shown on a tab when you hover it:</p>
+    <label class="choice">
+      <input type="radio" name="remove" value="forget" />
+      Remove the tab from the list (it stays open)
+    </label>
+    <label class="choice">
+      <input type="radio" name="remove" value="close" />
+      Close the tab
+    </label>
+
+    <h2>Shortcut</h2>
+    <div class="keys"><span>Recent tabs, forward</span><span id="forward"></span></div>
+    <div class="keys"><span>Recent tabs, backward</span><span id="backward"></span></div>
+
+    <details id="setup">
+      <summary>Set it to Ctrl+Tab</summary>
+      <p class="note">
+        Chrome's shortcut field refuses Ctrl+Tab, so it is set once with a short command instead.
+      </p>
+      <ol>
+        <li><button id="open-shortcuts">Open the shortcuts page</button></li>
+        <li>
+          On that page, open the DevTools console:
+          <kbd>Cmd</kbd> <kbd>Option</kbd> <kbd>J</kbd> on a Mac, <kbd>Ctrl</kbd> <kbd>Shift</kbd>
+          <kbd>J</kbd> elsewhere.
+        </li>
+        <li>
+          Paste this and press Enter. If Chrome asks, type <kbd>allow pasting</kbd> first.
+          <pre id="snippet"></pre>
+          <button id="copy">Copy</button>
+        </li>
+      </ol>
+      <p class="note">Any other shortcut can be typed normally on the shortcuts page.</p>
+    </details>
+
+    <script src="options.js"></script>
+  </body>
+</html>
