@@ -1,13 +1,22 @@
 # controlTab
 
 Ctrl+Tab that goes to your most recently used tabs instead of the next tab in the strip, with an
-optional visual switcher in the style of Arc.
+optional visual switcher in the style of Arc. For Chromium browsers such as Chrome and Brave.
+
+![The controlTab switcher shown over a web page](docs/screenshot.webp)
 
 ## Install
 
-1. Open `chrome://extensions` and turn on **Developer mode** (top right).
-2. Click **Load unpacked** and pick this folder.
-3. The settings open by themselves. Follow **Set it to Ctrl+Tab** there (one time only).
+The extension is not on the Chrome Web Store, so it is loaded from a folder:
+
+1. Download it: on the GitHub page click **Code**, then **Download ZIP**, and unzip the file
+   (or `git clone` the repository).
+2. Open `chrome://extensions` and turn on **Developer mode** (top right).
+3. Click **Load unpacked** and pick the unzipped folder, the one that contains `manifest.json`.
+4. The settings open by themselves. Follow **Set it to Ctrl+Tab** there (one time only).
+
+Keep the folder where it is, since the browser loads the extension from it. To update, replace
+the files and click the reload icon on the extension's card.
 
 ## Binding Ctrl+Tab
 
